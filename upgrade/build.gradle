@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+    id 'com.github.dcendents.android-maven' version '2.1'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.0'
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 30
+        versionCode 12
+        versionName "2.3.4"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "VERSION_NAME", "\"${defaultConfig.versionName}\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "VERSION_NAME", "\"${defaultConfig.versionName}\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+}
